@@ -23,6 +23,5 @@ class MyTests {
             text = "Android",
             substring = true
         ).assertIsDisplayed()
-
     }
 }
