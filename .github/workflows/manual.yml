@@ -15,7 +15,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: 20
-      - uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: printenv
+      #- uses: reactivecircus/android-emulator-runner@v2
+      #  with:
+      #    api-level: 29
+      - run: ./gradlew -v
