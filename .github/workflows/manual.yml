@@ -19,10 +19,11 @@ jobs:
           distribution: 'zulu'
           java-version: 17.0.6
       
-      - name: Unit тест
+      - name: Выполнить unit тесты
         run: ./gradlew testDebugUnitTest
           
-      - uses: reactivecircus/android-emulator-runner@v2
+      - name: Выполнить тесты на эмуляторе
+        uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
           script: ./gradlew connectedCheck
