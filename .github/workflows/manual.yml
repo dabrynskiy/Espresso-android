@@ -10,17 +10,20 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: извлечь репозиторий из github
+      - name: Извлечь репозиторий из github
         uses: actions/checkout@v3
       
-      - name: скачать и установить JAVA
+      - name: Скачать и установить JAVA
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: 17.0.6
           
-      #- uses: reactivecircus/android-emulator-runner@v2
-      #  with:
-      #    api-level: 29
-      - run: java -version
-      - run: ./gradlew testDebugUnitTest
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+      
+      - name: Unit тест
+        run: ./gradlew testDebugUnitTest
+      
+      - run: ./gradlew connectedCheck
