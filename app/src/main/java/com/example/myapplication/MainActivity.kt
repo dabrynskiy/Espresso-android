@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Greeting(
-                        name = "Android"
+                        name = stringResource(R.string.android)
                     )
                 }
             }
@@ -36,11 +37,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
+    val greeting = stringResource(id = R.string.greeting)
+
     Text(
-        text = "Hello $name!",
+        text = "${stringResource(R.string.hello)} ${name}!",
         modifier = Modifier
-            .testTag("greeting_text")
-            .semantics { contentDescription = "Greeting" }
+            .testTag(MainActivitySemantics.greetingText)
+            .semantics { contentDescription = greeting }
     )
 }
 
@@ -48,6 +51,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     MyApplicationTheme {
-        Greeting("Android")
+        Greeting(stringResource(R.string.android))
     }
 }
