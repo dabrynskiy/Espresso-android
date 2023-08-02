@@ -15,36 +15,15 @@ class MainActivityUITests {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
-    private val resources: Resources = InstrumentationRegistry.getInstrumentation()
-        .targetContext.resources
-
     @Test
-    fun testTextIsDisplayed() {
-        // Just different search options :-)
-
-        // with text (substring)
-        composeTestRule.onNodeWithText(
-            text = resources.getString(R.string.android),
-            substring = true
-        ).assertIsDisplayed()
-
-
-        // with testTag
-        composeTestRule.onNodeWithTag(MainActivitySemantics.greetingText)
-            .assertIsDisplayed()
-
-        // with content description
-        composeTestRule.onNodeWithContentDescription(
-            resources.getString(R.string.greeting)
-        )
-
+    fun testGreetingText() {
+        with(MainActivityTestScreen(composeTestRule)) {
+            checkGreetingText()
+        }
     }
 
     @Test
-    fun testContentDescription() {
-        composeTestRule.onNodeWithTag(MainActivitySemantics.greetingText)
-            .assertContentDescriptionEquals(
-                resources.getString(R.string.greeting)
-            )
+    fun test() {
+        assert(1 == 2) {"Тестовая ошибка"}
     }
 }
