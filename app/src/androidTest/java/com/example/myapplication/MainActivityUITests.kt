@@ -22,8 +22,8 @@ class MainActivityUITests {
         }
     }
 
-    @Test
+    /*@Test
     fun test() {
         assert(1 == 2) {"Тестовая ошибка"}
-    }
+    }*/
 }
